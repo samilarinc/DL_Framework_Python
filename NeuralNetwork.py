@@ -19,6 +19,7 @@ class NeuralNetwork(object):
         self.layers = list()
         self.data_layer = None
         self.loss_layer = None
+        self.data = None
 
         self.weights_initializer = copy.deepcopy(weights_initializer)
         self.bias_initializer = copy.deepcopy(bias_initializer)
@@ -40,7 +41,7 @@ class NeuralNetwork(object):
         self._phase = phase
 
     def forward(self):
-        data, self.label = copy.deepcopy(self.data_layer.next())
+        data, self.label = self.data.next_batch()
         reg_loss = 0
         for layer in self.layers:
             layer.testing_phase = False
@@ -65,13 +66,15 @@ class NeuralNetwork(object):
     def train(self, iterations):
         self.phase = 'train'
         for epoch in range(iterations):
-            start = time.time()
-            # print('Epoch: %4d'%(epoch+1), end = ' ')
-            loss = self.forward()
-            self.loss.append(loss)
-            self.backward()
-            stop = time.time()
-            # print('%.2f'%(stop-start))
+            inner_loss = 0
+            while not self.data.finished:
+                loss = self.forward()
+                inner_loss += loss
+                self.backward()
+            print("Epoch: %2d, Loss: %6.2f appended!"%(epoch, inner_loss))
+            self.loss.append(inner_loss)
+            self.data.finished = False
+        return self.loss
 
     def test(self, input_tensor):
         self.phase = 'test'
