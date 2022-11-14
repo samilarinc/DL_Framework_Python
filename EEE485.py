@@ -2,8 +2,9 @@ from NeuralNetwork import NeuralNetwork as nn
 from Layers import *
 from Optimization import *
 from data_layer import *
+import matplotlib.pyplot as plt
 
-opt = Optimizers.Sgd(0.001)
+opt = Optimizers.Adam(0.01, 0.9, 0.8)
 init_w = Initializers.He()
 init_b = Initializers.He()
 
@@ -15,21 +16,16 @@ net.loss_layer = loss
 
 layer1 = FullyConnected.FullyConnected(4, 4)
 act1 = ReLU.ReLU()
-layer2 = FullyConnected.FullyConnected(4, 4)
-act2 = ReLU.ReLU()
-layer3 = FullyConnected.FullyConnected(4, 2)
-act3 = ReLU.ReLU()
-layer4 = FullyConnected.FullyConnected(2, 1)
+layer2 = FullyConnected.FullyConnected(4, 1)
 
 net.append_layer(layer1)
 net.append_layer(act1)
 net.append_layer(layer2)
-net.append_layer(act2)
-net.append_layer(layer3)
-net.append_layer(act3)
-net.append_layer(layer4)
 
-epochs = 1000
+epochs = 10000
 loss = net.train(epochs)
 
-print(loss)
+print(min(loss))
+
+plt.plot(loss)
+plt.show()
