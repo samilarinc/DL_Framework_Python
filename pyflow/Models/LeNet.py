@@ -1,7 +1,7 @@
 import numpy as np
-import NeuralNetwork as nn
-from Layers import *
-from Optimization import *
+import pyflow.NeuralNetwork as nn
+from pyflow.Layers import *
+from pyflow.Optimization import *
 
 def build():
     optimizer = Optimizers.Adam(5e-4, 0.9, 0.999)

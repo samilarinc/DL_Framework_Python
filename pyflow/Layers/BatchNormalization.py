@@ -1,5 +1,5 @@
 import numpy as np
-from Layers import Base, Helpers 
+from pyflow.Layers import Base, Helpers 
 import copy
 
 class BatchNormalization(Base.BaseLayer):

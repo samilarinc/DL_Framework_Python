@@ -1,6 +1,6 @@
 import numpy as np
-from Optimization import Optimizers
-from Layers import Base
+from pyflow.Optimization import Optimizers
+from pyflow.Layers import Base
 import copy
 
 class FullyConnected(Base.BaseLayer):

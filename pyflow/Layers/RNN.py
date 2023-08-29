@@ -1,8 +1,8 @@
 import numpy as np
 import copy
-from Layers import Base
-from Layers.FullyConnected import FullyConnected
-from Layers.TanH import TanH
+from pyflow.Layers import Base
+from pyflow.Layers.FullyConnected import FullyConnected
+from pyflow.Layers.TanH import TanH
 
 class RNN(Base.BaseLayer):
     def __init__(self, input_size, hidden_size, output_size):

@@ -1,4 +1,4 @@
-from Layers import Base
+from pyflow.Layers import Base
 
 class Flatten(Base.BaseLayer):
     def __init__(self):

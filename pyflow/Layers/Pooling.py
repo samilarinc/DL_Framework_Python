@@ -1,5 +1,5 @@
 import numpy as np
-from Layers import Base
+from pyflow.Layers import Base
 
 class Pooling(Base.BaseLayer):
     def __init__(self, stride_shape, pooling_shape):

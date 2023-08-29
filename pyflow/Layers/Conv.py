@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import signal
-from Layers import Base
+from pyflow.Layers import Base
 from scipy.signal import correlate2d, convolve2d
 import copy
 
