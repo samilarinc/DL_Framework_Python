@@ -21,6 +21,7 @@ net.loss_layer = Loss.CrossEntropyLoss()
 
 net.train(num_epochs)
 
+
 if you_want_to_save_the_result:
     NeuralNetwork.save(dir, net)
 
